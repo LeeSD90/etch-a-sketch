@@ -1,9 +1,12 @@
 $(document).ready(function() {
 	createGrid(64);
-	monitor();
+	monitorGrid();
+	newGrid();
 });
 
 function createGrid(gridSize){
+	clearGrid();
+
 	var squareSize = (512/gridSize);
 	var totalSquares = gridSize * gridSize;
 
@@ -16,8 +19,19 @@ function createGrid(gridSize){
 
 }
 
-function monitor(){
+function monitorGrid(){
 	$(".square").hover(function(){
 		$(this).css("background-color", "black");
 	});
+}
+
+function newGrid(){
+	$("#create").click(function(){
+		createGrid($("input[name=gridSize]").val());
+		monitorGrid();
+	});
+}
+
+function clearGrid(){
+	$("#grid").empty();
 }
