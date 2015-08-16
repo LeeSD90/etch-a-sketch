@@ -28,6 +28,6 @@ function draw(){
 function newGrid(){
 	$("#create").click(function(){
 		createGrid($("input[name=gridSize]").val());
-		monitorGrid();
+		draw();
 	});
 }
