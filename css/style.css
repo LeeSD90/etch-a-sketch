@@ -1,0 +1,30 @@
+#grid{
+	width: 512px;
+	height: 512px;
+	text-align:center;
+	background-color: #DCDCDC;
+	margin: 10px auto;
+	display: block;
+	padding: 0;
+	border: 0;
+}
+
+#title{
+	text-align:center;
+	font-weight: bold;
+	margin: 30px auto;
+}
+
+.square{
+	display: inline-block;
+	background-color: #EEEEEE;
+	height: 16px;
+	width: 16px;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+.lit-square{
+	
+}
