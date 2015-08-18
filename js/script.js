@@ -16,7 +16,6 @@ function createGrid(gridSize){
 
 	$(".square").width(squareSize);
 	$(".square").height(squareSize);
-
 }
 
 function draw(){
