@@ -20,17 +20,25 @@ function createGrid(gridSize){
 
 function draw(){
 	var color = $("input[name=color_select]:checked").val();
+	var draw = false;
+
 	$('input[name=color_select]').change(function(){
 		color = $("input[name=color_select]:checked").val();
 	});
 
+	$("#grid").click(function(){
+		draw = !draw;
+	});
+
 	$(".square").hover(function(){
-		if(color === "black"){
-			$(this).css("background-color", "black");
-		}
-		else if(color === "random"){
-			var rgbVals = [1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255)]
-			$(this).css("background-color", "rgb("+rgbVals+")");
+		if(draw){
+			if(color === "black"){
+				$(this).css("background-color", "black");
+			}
+			else if(color === "random"){
+				var rgbVals = [1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255)]
+				$(this).css("background-color", "rgb("+rgbVals+")");
+			}
 		}
 	});
 }
