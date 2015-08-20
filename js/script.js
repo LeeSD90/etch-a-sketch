@@ -1,7 +1,39 @@
 $(document).ready(function() {
-	createGrid(64);
-	draw();
-	newGrid();
+	var color = $("input[name=color_select]:checked").val();
+	var draw = true;
+
+	createGrid($("input[name=grid_size]").val());
+
+
+	$(':button').click(function(){
+		switch($(this).attr('id')){
+			case 'create':
+				createGrid($("input[name=grid_size]").val());
+				break;
+			default:
+				break;
+		}
+	})
+
+	$("#grid").click(function(){
+		draw = !draw;
+	});
+
+	$('input[name=color_select]').change(function(){
+		color = $("input[name=color_select]:checked").val();
+
+		switch(color){
+			case 'black':
+				drawBlack();
+				break;
+			case 'random':
+				drawRandom();
+				break;
+			default:
+				break;
+		}
+	});
+
 });
 
 function createGrid(gridSize){
@@ -18,34 +50,15 @@ function createGrid(gridSize){
 	$(".square").height(squareSize);
 }
 
-function draw(){
-	var color = $("input[name=color_select]:checked").val();
-	var draw = false;
-
-	$('input[name=color_select]').change(function(){
-		color = $("input[name=color_select]:checked").val();
-	});
-
-	$("#grid").click(function(){
-		draw = !draw;
-	});
-
+function drawBlack(){
 	$(".square").hover(function(){
-		if(draw){
-			if(color === "black"){
-				$(this).css("background-color", "black");
-			}
-			else if(color === "random"){
-				var rgbVals = [1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255)]
-				$(this).css("background-color", "rgb("+rgbVals+")");
-			}
-		}
+		$(this).css("background-color", "black");
 	});
 }
 
-function newGrid(){
-	$("#create").click(function(){
-		createGrid($("input[name=grid_size]").val());
-		draw();
+function drawRandom(){
+	$(".square").hover(function(){
+		var rgbVals = [1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255)]
+		$(this).css("background-color", "rgb("+rgbVals+")");
 	});
 }
