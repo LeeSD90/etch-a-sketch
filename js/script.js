@@ -1,3 +1,5 @@
+//Need to add something to start the drawing on an initial refresh
+
 $(document).ready(function() {
 	var color = $("input[name=color_select]:checked").val();
 	var draw = true;
