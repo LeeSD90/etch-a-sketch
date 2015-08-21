@@ -1,5 +1,6 @@
 //Need to add something to start the drawing on an initial refresh
-
+//Figure out how to stop the listeners in each colour function? Couldnt work this out tonight while implementing a gradient effect.
+//Will start over next time instead
 $(document).ready(function() {
 	var color = $("input[name=color_select]:checked").val();
 	var draw = true;
