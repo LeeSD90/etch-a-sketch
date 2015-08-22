@@ -12,6 +12,9 @@ function createGrid(gridSize){
 
 	$(".square").width(squareSize);
 	$(".square").height(squareSize);
+
+	$('.square').off("mouseenter mouseleave");		//Important to unbind old hover event handlers!
+	draw($("input[name=color_select]:checked").val());
 }
 
 function draw(color){
@@ -44,7 +47,7 @@ function drawRandom(){
 }
 
 function drawGradient(){
-	
+
 }
 
 $(document).ready(function() {
