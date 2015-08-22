@@ -59,7 +59,9 @@ $(document).ready(function() {
 	$(':button').click(function(){
 		switch($(this).attr('id')){
 			case 'create':
-				createGrid($("input[name=grid_size]").val());
+				if($("input[name=grid_size]").val() <= 128 && $("input[name=grid_size]").val() >= 0){
+					createGrid($("input[name=grid_size]").val());
+				} else alert("Please enter a value between 0 and 128");
 				break;
 			default:
 				break;
