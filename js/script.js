@@ -1,6 +1,4 @@
 //Need to add something to start the drawing on an initial refresh
-//Figure out how to stop the listeners in each colour function? Couldnt work this out tonight while implementing a gradient effect.
-//Will start over next time instead
 //fiddler?
 function createGrid(gridSize){
 	$("#grid").empty();
