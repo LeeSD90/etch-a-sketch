@@ -22,6 +22,8 @@ function draw(color){
 		case 'random':
 			drawRandom();
 			break;
+		case 'gradient':
+			drawGradient();
 		default:
 			break;
 	}
@@ -39,6 +41,10 @@ function drawRandom(){
 		var rgbVals = [1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255)]
 		$(this).css("background-color", "rgb("+rgbVals+")");
 	});
+}
+
+function drawGradient(){
+	
 }
 
 $(document).ready(function() {
