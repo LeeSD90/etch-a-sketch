@@ -1,55 +1,3 @@
-//Need to add something to start the drawing on an initial refresh
-//fiddler?
-function createGrid(gridSize){
-	$("#grid").empty();
-
-	var squareSize = (512/gridSize);
-	var totalSquares = gridSize * gridSize;
-
-	for(i = 0; i < totalSquares; i++){
-		$('#grid').prepend('<div class="square"></div>');
-	}
-
-	$(".square").width(squareSize);
-	$(".square").height(squareSize);
-
-	$('.square').off("mouseenter mouseleave");		//Important to unbind old hover event handlers!
-	draw($("input[name=color_select]:checked").val());
-}
-
-function draw(color){
-	switch(color){
-		case 'black':
-			drawBlack();
-			break;
-		case 'random':
-			drawRandom();
-			break;
-		case 'gradient':
-			drawGradient();
-		default:
-			break;
-	}
-}
-
-function drawBlack(){
-	$(".square").hover(function(){
-		console.log("black");
-		$(this).css("background-color", "black");
-	});
-}
-
-function drawRandom(){
-	$(".square").hover(function(){
-		var rgbVals = [1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255)]
-		$(this).css("background-color", "rgb("+rgbVals+")");
-	});
-}
-
-function drawGradient(){
-
-}
-
 $(document).ready(function() {
 	var color = $("input[name=color_select]:checked").val();
 	var drawing = true;
@@ -79,3 +27,69 @@ $(document).ready(function() {
 	});
 
 });
+
+function createGrid(gridSize){
+	$("#grid").empty();
+
+	var squareSize = (512/gridSize);
+	var totalSquares = gridSize * gridSize;
+
+	for(i = 0; i < totalSquares; i++){
+		$('#grid').prepend('<div class="square"></div>');
+	}
+
+	$(".square").width(squareSize);
+	$(".square").height(squareSize);
+
+	$('.square').off("mouseenter mouseleave");		//Important to unbind old hover event handlers!
+	draw($("input[name=color_select]:checked").val());
+}
+
+function draw(color){
+	switch(color){
+		case 'black':
+			drawBlack();
+			break;
+		case 'random':
+			drawRandom();
+			break;
+		case 'gradient':
+			drawGradient();
+			break;
+		case 'erase':
+			erase();
+			break;
+		default:
+			break;
+	}
+}
+
+function drawBlack(){
+	$(".square").hover(function(){
+		console.log("black");
+		$(this).css("background-color", "black");
+		$(this).css("opacity", 1);
+	});
+}
+
+function drawRandom(){
+	$(".square").hover(function(){
+		var rgbaVals = [1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255),1+Math.floor(Math.random()*255),1]
+		$(this).css("background-color", "rgba("+rgbaVals+")");
+		$(this).css("opacity", 1);
+	});
+}
+
+function drawGradient(){
+
+}
+
+function erase(){
+	$(".square").hover(function(){
+		var opacity = $(this).css("opacity");
+		var newOpacity = opacity - 0.2;
+		if(newOpacity > 0){
+			$(this).css("opacity", newOpacity);
+		} else $(this).css("opacity", 0);
+	});
+}
