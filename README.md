@@ -1,1 +1,2 @@
-Etch-a-sketch Javascript app
+## Etch-A-Sketch
+Etch-a-sketch javascript app
